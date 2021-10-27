@@ -48,7 +48,7 @@ alfas = function(tablaX, precisionAlfa=0.05, favorable=TRUE){
       cat ("La mejor alternativa es",altsinrep[1],"para alfa perteneciente a [ 0 ,",
            alfas[1],"], ")
       for (i in 1:(length(alfas)-1)) {
-        cat ("la mejor alternativa es",altsinrep[i],"para alfa perteneciente a [",
+        cat ("la mejor alternativa es",altsinrep[i+1],"para alfa perteneciente a [",
              alfas[i],",",alfas[i+1],"] ") 
       }
       cat ("y la mejor alternativa es", altsinrep[length(altsinrep)], "si alfa pertenece a [", 
