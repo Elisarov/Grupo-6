@@ -329,6 +329,45 @@ alfas(tE,precisionAlfa = 0.02,favorable = FALSE)
 alfas(tE,precisionAlfa = 0.07,favorable = FALSE)
 ```
 
+Ejemplo Marcos:
+
+Enunciado:
+Una fábrica se espera una demanda de 1 a 4 unidades de un producto este mes. Si son fabricadas y se venden este mismo mes dan unos beneficios de 6500€, pero si no, el beneficio será solo de 4000€ por los costes de almacenamiento hasta el mes que viene. El coste de fabricación de cada unidad es de 5000€. Si las probabilidades de la demanada son 0.1, 0.2, 0.4 y 0.3 respectivamente, ¿cuántas unidades deben fabricar?
+
+Planteamiento:
+-Un decisor
+-Modelo favorable
+
+Alternativas:
+1 = "Fabricar 1 ud"
+2 = "Fabricar 2 uds"
+3 = "Fabricar 3 uds"
+4 = "Fabricar 4 uds"
+
+Estados de la naturaleza:
+E1: Demanda de 1 ud
+E2: Demanda de 2 uds
+E3: Demanda de 3 uds
+E4: Demanda de 4 uds
+
+Solución:
+
+```{r}
+tM = matrix(c(1500, 1500, 1500, 1500,
+500, 3000, 3000, 3000,
+-5000, 2000, 4500, 4500,
+-1500, 1000, 3500, 6000), nrow = 4, byrow = T)
+rownames(tM) <- c("Fabricar 1 ud", "Fabricar 2 uds", "Fabricar 3 uds", "Fabricar 4 uds")
+colnames(tM) <- c("Demanda = 1", "Demanda = 2", "Demanda = 3", "Demanda = 4")
+tM
+```
+
+```{r}
+criterio.Todos(tM, alfa=0.7,favorable = TRUE)
+dibuja.criterio.Hurwicz(tM,favorable=TRUE)
+alfas(tM,precisionAlfa = 0.1,favorable = TRUE)
+alfas(tM,precisionAlfa = 0.02,favorable = TRUE)
+```
 
 
 
