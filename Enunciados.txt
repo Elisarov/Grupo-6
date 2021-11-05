@@ -16,11 +16,11 @@ posible) con un compañero de trabajo.
 
 y se recoge en la siguiente tabla:
 
-------- E1 E2 E3 E4
-Coche 24 27 10 16
-Autobús 16 16 16 16
-Patinete 13 23 21 15
-Metro 25 24 14 14
+--------- E1 E2 E3 E4
+Coche     24 27 10 16
+Autobús   16 16 16 16
+Patinete  13 23 21 15
+Metro     25 24 14 14
 
 ¿Qué transporte sería la mejor opción (con el que más ahorre) para ir a
 trabajar?
@@ -62,16 +62,16 @@ normal 15000€ y si es cálida, los beneficios disminuirán a 2500€
 
 ## Enunciado Elisa Rovai:
 
-María tiene que elegir un piso donde vivir por un año.
-Su decisión depiende da la posición del piso y da los costes que va a tener en base a la posición.
+María tiene que elegir un piso donde vivir durante un año.
+Su decisión depende da la posición del piso y da los costes que va a tener en base a la posición.
 María puede elegir si vivir:
 En centro
-[0-10]km dal centro
+[0-10]km del centro
 10 km
 
-Si elige el piso en el centro tiene que pagar 500€ de alquilar, 10€ de facturas y 0€ de transporte al mes
-Si elige el piso en cerca del centro [0-10]km tiene que pagar 430€ de alquilar, 16€ de facturas y 20€ de transporte al mes
-Si elige el más lejos tiene que pagar 350€ de alquilar, 20€ de facturas y 70€ de transporte al mes
+Si elige el piso en el centro tiene que pagar 500€ de alquilar, 10€ de facturas y 0€ de transporte al mes.
+Si elige el piso en cerca del centro [0-10]km tiene que pagar 430€ de alquilar, 16€ de facturas y 20€ de transporte al mes.
+Si elige el más lejos tiene que pagar 350€ de alquilar, 20€ de facturas y 70€ de transporte al mes.
 
 ¿Cuál es la mejor decisión para que se gaste lo menos posible?
 
