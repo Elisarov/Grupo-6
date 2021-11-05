@@ -1,0 +1,91 @@
+---
+title: "Trabajo1_Ejemplo2"
+author: "Laura Romero Roldán"
+date: "3/11/2021"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+source("teoriadecision_funciones_incertidumbre.R", encoding = "UTF-8")
+source("teoriadecision_funciones_trabajo1.R", encoding = "UTF-8")
+```
+
+Un empresario está tratando de decidir qué tipo de calzado fabricar para el próximo año, teniendo en cuenta que la temperatura pasa por sus 3 estados a lo largo de todo el año (Frío, Normal, Cálido).
+Tiene las siguientes opciones:
+
+• Botas, los beneficios depende de la temperatura, si la temperatura es fría obtendrá aproximadamente 60000€, si es normal 15000€ y si es cálida, los beneficios disminuirán a 2500€
+
+• Zapatos, si la temperatura es fría obtendrá aproximadamente 5000€, si es normal 30000€ y si es cálida 10000€
+
+• Sandalias, si la temperatura es fría obtendrá una pérdida de 5000€, si es normal los beneficios serán 7500€ y si es cálida 50000€
+
+¿Qué tipo de calzado le recomienda usted, si su objetivo es maximizar los beneficios?
+
+**Planteamiento**
+
+-   Un decisor
+
+-   Modelo de beneficios (favorable)
+
+-   Alternativas:
+
+    -   d1 = "botas"
+
+    -   d2 = "zapatos"
+
+    -   d3 = "sandalias"
+
+-   Estados de la naturaleza:
+
+    -   e1 = "frío"
+
+    -   e2 = "normal"
+
+    -   e3 = "cálido"
+
+**Introducción de datos**
+
+```{r}
+tbLaura = crea.tablaX(c(60,15,2.5,
+                        5,30,10,
+                        -5,7.5,50), numalternativas = 3, numestados = 3)
+
+colnames(tbLaura)=c('Frío','Normal','Cálido')
+rownames(tbLaura)=c('Botas','Zapatos','Sandalias')
+
+tbLaura
+```
+
+**Solución**
+```{r}
+criterio.Todos(tbLaura, alfa=0.3,favorable = TRUE)
+```
+
+Según el criterio de Wald la mejor alternativa es la 2 (Zapatos), y según los demás
+criterios la mejor alternativa es la 1 (Botas).
+
+Vamos a ver ahora como varía el criterio de Hurwicz para los diferentes valores de alfa:
+
+```{r}
+dibuja.criterio.Hurwicz(tbLaura,favorable=TRUE)
+```
+
+```{r}
+alfas(tbLaura,precisionAlfa = 0.05,favorable = TRUE)
+```
+
+La mejor **alternativa es 2** para alfa perteneciente a [ 0 , 0.1 ] 
+y la mejor **alternativa es 1** para alfa perteneciente a [ 0.1 , 1 ]
+
+```{r}
+alfas(tbLaura,precisionAlfa = 0.01,favorable = TRUE)
+```
+La mejor **alternativa es 2** para alfa perteneciente a [ 0 , 0.08 ] 
+y la mejor **alternativa es 1** para alfa perteneciente a [ 0.08 , 1 ]
+
