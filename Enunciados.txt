@@ -43,11 +43,11 @@ Si el negocio le funciona, se piensa que podrá vender 50.000 kilos, pero si es 
 
 
 
-## Enunciado Laura Romero:
+## Enunciado Laura Romero:     
 
 Un empresario está tratando de decidir qué tipo de calzado fabricar para el próximo año, teniendo en cuenta que la 
 temperatura pasa por sus 3 estados a lo largo de todo el año (Frío, Normal, Cálido).
-Tiene las siguientes opciones:
+Tiene las siguientes opciones: 
 
 • Botas, los beneficios dependen de la temperatura, si la temperatura es fría obtendrá aproximadamente 60000€, si es 
 normal 15000€ y si es cálida, los beneficios disminuirán a 2500€
@@ -56,7 +56,7 @@ normal 15000€ y si es cálida, los beneficios disminuirán a 2500€
 
 • Sandalias, si la temperatura es fría obtendrá una pérdida de 5000€, si es normal los beneficios serán 7500€ y si es cálida 50000€
 
-¿Qué tipo de calzado le recomienda usted, si su objetivo es maximizar los beneficios?
+ ¿Qué tipo de calzado le recomienda usted, si su objetivo es maximizar los beneficios?
 
 
 
