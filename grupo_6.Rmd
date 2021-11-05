@@ -311,7 +311,7 @@ E3: transporte
 
 ```{r}
 tE = matrix(c(500,430,350,12,9,20,0,20,70),nrow = 3)
-rownames(tE) <- c("Centro", "[0,10]km dal centro", "-10 km dal centro")
+rownames(tE) <- c("Centro", "[0,10]km desde centro", "+10 km desde centro")
 colnames(tE) <- c("Alquilar", "Facturas", "Transporte")
 tE
 ```
