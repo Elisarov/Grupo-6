@@ -237,7 +237,7 @@ los beneficios serán 7500€ y si es cálida 50000€
 beneficios?
 
 
-Resolución:
+Resolución: 
 Objetivo: maximizar beneficios
 
 Planteamiento:
