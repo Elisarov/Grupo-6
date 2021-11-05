@@ -20,7 +20,7 @@ alfas = function(tablaX, precisionAlfa=0.05, favorable=TRUE){
     } else {
       vAltH = alfab * Altmin + (1-alfab) * Altmax;
       vHurwicz[i] = min(vAltH)
-      alternativa[i]=which.min(vAltH) #que alternativa lo cumple
+      alternativa[i]=which.min(vAltH) #que alternativa lo cumple  
     }
     
   }
@@ -30,7 +30,7 @@ alfas = function(tablaX, precisionAlfa=0.05, favorable=TRUE){
   #posiciones de cuándo aparecen las nuevas alternativas en el intervalo [0,1] (alfas)
   alfas=alfasb[-1] #quitamos la primera que siempre será 0)
   
-  #salida que se nos pide:
+  # salida que se nos pide:
   return(
   
   if (length(alfas)==1) {
@@ -65,12 +65,11 @@ t2=crea.tablaX(c(24,27,10,16,16,16,16,16,23,23,21,15,25,24,18,14),4,4)
 criterio.Hurwicz(t2,0.3,favorable = TRUE)
 dibuja.criterio.Hurwicz(t2,favorable=TRUE)
 
-
 alfas(t2,precisionAlfa = 0.05,favorable = TRUE)
 alfas(t2,precisionAlfa = 0.01,favorable = TRUE)
 
 
-#OTRO EJEMPLO:
+# OTRO EJEMPLO:
 X3 = crea.tablaX(c(125,120,156,60,130,80), numalternativas = 3, numestados = 2)
 colnames(X3)=c('e1','e2')
 rownames(X3)=c('d1','d2','d3')
