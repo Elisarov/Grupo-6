@@ -69,9 +69,9 @@ En centro
 [0-10]km del centro
 10 km
 
-Si elige el piso en el centro tiene que pagar 500€ de alquilar, 10€ de facturas y 0€ de transporte al mes.
-Si elige el piso en cerca del centro [0-10]km tiene que pagar 430€ de alquilar, 16€ de facturas y 20€ de transporte al mes.
-Si elige el más lejos tiene que pagar 350€ de alquilar, 20€ de facturas y 70€ de transporte al mes.
+Si elige el piso en el centro tiene que pagar 500€ de alquiler, 10€ de facturas y 0€ de transporte al mes.
+Si elige el piso en cerca del centro [0-10]km tiene que pagar 430€ de alquiler, 16€ de facturas y 20€ de transporte al mes.
+Si elige el más lejos tiene que pagar 350€ de alquiler, 20€ de facturas y 70€ de transporte al mes.
 
 ¿Cuál es la mejor decisión para que se gaste lo menos posible?
 
