@@ -1,0 +1,182 @@
+---
+title: "Ejemplo de Gloria"
+author: "Gloria Vizcaíno"
+date: "5/11/2021"
+output:
+  pdf_document: default
+  html_document: default
+editor_options:
+  markdown:
+    wrap: 72
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Carga del script con las funciones que usaré:
+
+```{r}
+source("teoriadecision_funciones_incertidumbre.R")
+```
+
+Función que da la mejor alternativa según el valor de alfa:
+
+```{r}
+alfas = function(tablaX, precisionAlfa=0.05, favorable=TRUE){
+  X = tablaX;
+  Altmin = apply(X,MARGIN=1,min);
+  Altmax = apply(X,MARGIN=1,max);
+  valfa = seq(from=0,to=1,by=precisionAlfa);
+  vHurwicz = rep(0,length(valfa));
+  alternativa = rep(0,length(valfa));
+  Alt_vHurwicz = rep(0,length(valfa));
+  for (i in 1:length(valfa)) {
+    alfab = valfa[i];
+    if (favorable) {
+      vAltH = alfab * Altmax + (1-alfab) * Altmin;
+      vHurwicz[i] = max(vAltH)
+      alternativa[i]=which.max(vAltH) #que alternativa lo cumple
+    } else {
+      vAltH = alfab * Altmin + (1-alfab) * Altmax;
+      vHurwicz[i] = min(vAltH)
+      alternativa[i]=which.min(vAltH) #que alternativa lo cumple
+    }
+    
+  }
+  
+  altsinrep=unique(alternativa) #me quedo con las diferentes alternativas 
+                                #(quitando las repeticiones)
+  alfasb = (which(!duplicated(alternativa)))*precisionAlfa - precisionAlfa
+  #posiciones de cuándo aparecen las nuevas alternativas en el intervalo [0,1] (alfas)
+  alfas=alfasb[-1] #quitamos la primera que siempre será 0)
+  
+  #salida que se nos pide:
+  return(
+  
+  if (length(alfas)==1) {
+    cat ("La mejor alternativa es",altsinrep[1],
+         "para alfa perteneciente a [ 0 ,",alfas[1],
+         "] \ny la mejor alternativa es",altsinrep[2], 
+         "para alfa perteneciente a [",alfas[1],", 1 ]")
+    } else {
+    if (length(alfas)==2) {
+      cat ("La mejor alternativa es",altsinrep[1],
+           "para alfa perteneciente a [ 0 ,",
+           alfas[1],"], \nla mejor alternativa es",altsinrep[2], 
+           "para alfa perteneciente a [",alfas[1],",",alfas[2],
+           "] \ny la mejor alternativa es", altsinrep[3], 
+           "si alfa pertenece a [",alfas[2],", 1 ]")
+    } else {
+      cat ("La mejor alternativa es",altsinrep[1],
+           "para alfa perteneciente a [ 0 ,",alfas[1],"], ")
+      for (i in 1:(length(alfas)-1)) {
+        cat ("\nla mejor alternativa es",altsinrep[i+1],
+             "para alfa perteneciente a [",alfas[i],",",alfas[i+1],"] ") 
+      }
+      cat ("\ny la mejor alternativa es", altsinrep[length(altsinrep)], 
+           "si alfa pertenece a [",alfas[length(alfas)],", 1 ]")
+      }
+    }
+  )
+  
+} #fin de función creada
+
+```
+
+# ENUNCIADO:
+
+Una persona quiere tomar la decisión de qué medio de transporte usar
+para ir diariamente a trabajar. Las alternativas son las siguientes:
+coche, autobús, patinete eléctrico y metro.
+
+El dinero que ahorraría el trabajador (expresado en euros) usando cada
+uno de los transportes varía según:
+
+E1: va al trabajo en dicho transporte y vuelve andando.
+
+E2: va al travajo andando y vuelve en dicho transporte.
+
+E3: va y vuelve del trabajo en dicho transporte.
+
+E4: va y vuelve al trabajo en dicho transporte repartiendo gastos (si es
+posible) con un compañero de trabajo.
+
+Y se recoge en la siguiente tabla:
+
++---------------+-----+----+----+-----+
+| **M. de       | E1  | E2 | E3 | E4  |
+| transporte**  |     |    |    |     |
++---------------+-----+----+----+-----+
+| Coche         | 24  | 27 | 10 | 16  |
++---------------+-----+----+----+-----+
+| Autobús       | 16  | 16 | 16 | 16  |
++---------------+-----+----+----+-----+
+| Patinete      | 13  | 23 | 21 | 15  |
+| Eléctrico     |     |    |    |     |
++---------------+-----+----+----+-----+
+| Metro         | 25  | 24 | 14 | 14  |
++---------------+-----+----+----+-----+
+
+¿Qué transporte sería la mejor opción (con el que más ahorre) para ir a
+trabajar?
+
+# SOLUCIÓN:
+
+Objetivo: maximizar ahorro.
+
+Planteamiento:
+
+-   Un decisor
+
+-   Modelo favorable
+
+Alternativas:
+
+-   1="Coche"
+
+-   2="Autobús"
+
+-   3="Patinete eléctrico"
+
+-   4="Metro"
+
+Estados de la naturaleza:
+
+-   E1 = "va al trabajo en dicho transporte y vuelve andando"
+
+-   E2 = "va al trabajo andando y vuelve en dicho transporte"
+
+-   E3 = "va y vuelve del trabajo en dicho transporte"
+
+-   E4 = "va y vuelve al trabajo en dicho transporte repartiendo gastos
+    (si es posible) con un compañero de trabajo"
+
+## Resolución en R:
+
+En primer lugar preparamos los datos y le aplicamos todos los criterios
+de incertidumbre estudiados para conocer cuál es la mejor alternativa en
+cada caso:
+
+```{r}
+t2=crea.tablaX(c(24,27,10,16,16,16,16,16,23,23,21,15,25,24,14,14),4,4) 
+criterio.Todos(t2, alfa=0.3,favorable = TRUE)
+```
+
+Según el criterio de Wald la mejor alternativa es la 2 (Autobús), según
+el criterio optimista la mejor alternativa es la 1 (coche) y según los
+demás criterios la mejor alternativa es la 3 (Patinete Eléctrico).
+
+NOTA: se ha aplicado el criterio de Hurwicz para alfa=0.3, vamos a ver
+ahora cómo varía para los diferentes valores de alfa:
+
+```{r}
+dibuja.criterio.Hurwicz(t2,favorable=TRUE)
+alfas(t2,precisionAlfa = 0.05,favorable = TRUE)
+```
+
+Hago lo mismo con una mayor precisión en los valores del alfa:
+
+```{r}
+alfas(t2,precisionAlfa = 0.001,favorable = TRUE)
+```
