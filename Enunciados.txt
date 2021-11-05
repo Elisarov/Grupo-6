@@ -78,3 +78,7 @@ Si elige el más lejos tiene que pagar 350€ de alquilar, 20€ de facturas y 7
 
 
 ## Enunciado Marcos Giraldez:
+
+Una fábrica se espera una demanda de 1 a 4 unidades de un producto este mes. Si son fabricadas y se venden este mismo mes dan unos beneficios de 6500€, pero si no, el beneficio será solo de 4000€ por los costes de almacenamiento hasta el mes que viene. El coste de fabricación de cada unidad es de 5000€. Si las probabilidades de la demanada son 0.1, 0.2, 0.4 y 0.3 respectivamente, ¿cuántas unidades deben fabricar?
+
+
